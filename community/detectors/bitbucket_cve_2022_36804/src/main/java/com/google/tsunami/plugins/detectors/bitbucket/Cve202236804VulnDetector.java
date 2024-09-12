@@ -29,6 +29,8 @@ import com.google.tsunami.proto.Severity;
 import com.google.tsunami.proto.TargetInfo;
 import com.google.tsunami.proto.Vulnerability;
 import com.google.tsunami.proto.VulnerabilityId;
+import io.github.pixee.security.HostValidator;
+import io.github.pixee.security.Urls;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -165,7 +167,7 @@ public class Cve202236804VulnDetector implements VulnDetector {
     if (publink.length() == 0) {
       return archiveLink;
     } else {
-      URL url = new URL(publink);
+      URL url = Urls.create(publink, Urls.HTTP_PROTOCOLS, HostValidator.DENY_COMMON_INFRASTRUCTURE_TARGETS);
       archiveLink =
           "rest/api/latest"
               + url.getPath().substring(0, url.getPath().lastIndexOf("/"))
