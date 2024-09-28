@@ -44,6 +44,7 @@ import com.google.tsunami.proto.Vulnerability;
 import com.google.tsunami.proto.VulnerabilityId;
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
 import java.time.Clock;
 import java.time.Instant;
 import java.util.concurrent.ExecutionException;
@@ -84,7 +85,7 @@ public final class ExampleCallingCommand implements VulnDetector {
       @CommandExecutionThreadPool ListeningExecutorService commandExecutorService)
       throws IOException {
     // Create a temporary file for command output.
-    this(utcClock, commandExecutorService, File.createTempFile("ExampleOutput", ".txt"));
+    this(utcClock, commandExecutorService, Files.createTempFile("ExampleOutput", ".txt").toFile());
   }
 
   ExampleCallingCommand(
