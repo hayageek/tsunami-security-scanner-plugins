@@ -102,8 +102,8 @@ public class HydraClient {
     this(
         hydraBinaryPath,
         enableHydra,
-        File.createTempFile(CREDS, ".txt"),
-        File.createTempFile("hydra", ".report"),
+        Files.createTempFile(CREDS, ".txt").toFile(),
+        Files.createTempFile("hydra", ".report").toFile(),
         options);
   }
 
