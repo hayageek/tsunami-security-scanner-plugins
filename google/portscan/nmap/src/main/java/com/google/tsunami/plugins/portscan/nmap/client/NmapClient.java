@@ -213,7 +213,7 @@ public class NmapClient {
   /** Constructor using runtime nmap path. */
   @Inject
   public NmapClient(@NmapBinaryPath String nmapBinaryPath) throws IOException {
-    this(nmapBinaryPath, File.createTempFile("nmap", ".report"));
+    this(nmapBinaryPath, Files.createTempFile("nmap", ".report").toFile());
   }
 
   /**
