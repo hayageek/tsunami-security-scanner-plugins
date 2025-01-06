@@ -150,7 +150,7 @@ public class NcrackClient {
   @Inject
   public NcrackClient(@NcrackBinaryPath String ncrackBinaryPath, NcrackClientCliOptions options)
       throws IOException {
-    this(ncrackBinaryPath, File.createTempFile("ncrack", ".report"), options);
+    this(ncrackBinaryPath, Files.createTempFile("ncrack", ".report").toFile(), options);
   }
 
   /**
